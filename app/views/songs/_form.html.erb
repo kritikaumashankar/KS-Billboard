@@ -31,14 +31,8 @@
       <% end %>
       </div>
 
-      <div class="ui modal">
-        <div class="header">Add Artist</div>
-          <div class="content">
-            <%= render 'artists/form', artist: @artist%>
-        </div>
-      </div>
   <div class="actions">
-    <%= form.submit nil, class: "ui button primary" %>
+    <%= form.submit "Save", class: "ui button primary" %>
   </div>
 <% end %>
 
