@@ -1,0 +1,40 @@
+<%= render '/layouts/navbar' %> 
+<div class ="container">
+<h1><%= @billboard.name %></h1>
+<%= link_to 'Delete Billboard', [@billboard, @song], method: :delete %> |
+<%= link_to 'Back to Billboards', billboards_path %> |
+<%= link_to 'Edit Billboard', edit_billboard_path(@billboard) %> |
+<%= link_to 'Add Song', new_billboard_song_path(@billboard) %> |
+
+
+
+<hr />
+    <div class="grid">
+        <div class="ui equal width grid">
+          <div class="column">Title</div>
+          <div class="column">Album</div>
+          <div class="column">Artist</div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+
+          <% @billboard.songs.each do |song| %>
+
+            <div class="ui equal width grid">
+              <div class="column"><%= song.title%></div>
+              <div class="column"><%= song.album %></div>
+              <div class="column"><%= song.artist != nil ? song.artist.name : ''  %></div>
+              <div class="column"> <%= link_to 'Edit', edit_billboard_song_path(@billboard, song) %> </div>
+              <div class="column"> <%= link_to 'Delete', [@billboard,song], method: :delete, data: { confirm: "Are you sure?" }  %> 
+                </div>
+              <div id="likeBtn" class="ui labeled button" tabindex="0">
+              <div class="ui red button"> <i class="heart icon"></i></div>
+              <div class="ui red button" onclick="incrementValue(event)">
+                     0
+                  </div>
+       
+              </div>
+            </div>
+            <%end%>
+    </div>
+</div>
